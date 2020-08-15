@@ -1,0 +1,26 @@
+{% extends 'movie_recommendation/base.html' %}
+{% load custom_actions %}
+
+
+
+{% block content %}
+ <h4 style="color:white;text-align:center;font-weight:800px;border-bottom:1px solid white">Popular This Month</h4>
+    <div class="row">
+   {% for i in data %}
+  <div class="col col-lg-4 col-sm-12 col-md-6">
+    <div class="card" style="width: 18rem;background:rgba(255, 255, 255, 0.712);">
+        <img src="{{ i.poster }}" class="card-img-top" alt="Movie Poster">
+        <div class="card-body">
+            <h5 class="card-title">{{ i.title }}</h5>
+            <div style="width: 100%;background-color:rgba(243, 33, 68, 0.555);;">
+                <div style="height:30px;text-align: right;padding-top: 2px;padding-bottom: 20px;color: white;width: {{ i.vote|mul }}%;background-color:rgba(243, 33, 68, 0.979);">{{ i.vote }}/10</div>
+            </div>
+            <br>
+            <a href="{{ i.title|more }}" class="btn btn-outline-danger">More</a>
+        </div>
+    </div>
+   </div>
+   {% endfor %}
+   </div>
+
+{% endblock content %}
